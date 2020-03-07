@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservices</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/spacelab/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main>
+        <h1 class="display-4 text-center title mt-4">
+            Microservicio
+        </h1>
+
+        <div class="row">
+            <div class="col-md-4 offset-md-4 my-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <form action="/chain" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="content" placeholder="Ingrese Temperatura" class="form-control" autofocus>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+
+                        </form>
+
+                    </div>
+                    <div class="card-body">
+                        <form action="/chain" method="GET">
+                            <h6>{{data}}</h6>
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
