@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, url_for, redirect, request
 import redis
+import json
 from flask_redis import FlaskRedis
 from datetime import datetime
 from rejson import Client, Path
@@ -12,18 +13,18 @@ def home():
 
 @app.route('/chain', methods=['GET'])
 def mostrar():
-    task= r.get("temperatura")
-    return render_template('index.html', data=task)
+    task= r.get('temperatura')
+    return task
 
 @app.route('/chain', methods=['POST'])
 def create():
     temp= request.form['content']
     time1= datetime.now()
     time2= datetime.now()
-    r.set("temperatura",str(temp))
-    r.set("tiempo1",str(time1))
-    r.set("tiempo2",str(time2))
-    return render_template((url_for('mostrar'))
+    r.set('temperatura',str(temp))
+    r.set('tiempo1',str(time1))
+    r.set('tiempo2',str(time2))
+    return render_template(url_for('mostrar'))
 
 if __name__== '__main__':
     app.run(debug=True, host="0.0.0.0", port=80)
